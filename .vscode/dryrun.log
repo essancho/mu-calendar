@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/madd/Desktop/Personal/mu-calendar'
+git update-index --assume-unchanged dist/bundle.js
+yarn
+NODE_ENV=production webpack -p --progress
+make: Leaving directory `/Users/madd/Desktop/Personal/mu-calendar'
+ 

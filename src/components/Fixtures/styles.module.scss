@@ -1,0 +1,48 @@
+.alignLeft {
+  display: flex !important;
+  justify-content: left;
+  text-align: left;
+  align-items: center;
+  img {
+    margin-right: 8px;
+  }
+}
+.alignRight {
+  text-align: right;
+  display: flex !important;
+  justify-content: right;
+  align-items: center;
+  img {
+    margin-left: 8px;
+  }
+}
+.dFlex {
+  display: flex;
+}
+.center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.date {
+  background-color: rgb(16, 16, 16);
+  padding: 7px;
+  border-radius: 5px;
+  color: white !important;
+  text-align: center;
+}
+
+.fixtureList {
+  margin: 70px 0;
+}
+.fixture:nth-child(even) {
+  background-color: rgb(240, 240, 240);
+  align-items: center;
+}
+
+.fixture {
+  padding: 15px 8px;
+  border-radius: 5px;
+  width: 620px;
+}

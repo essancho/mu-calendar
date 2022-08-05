@@ -29,7 +29,9 @@
       {
         "namedComponents": "arrow-function"
       }
-    ]
+    ],
+    "no-param-reassign": 0,
+    "arrow-body-style": 0
   },
   "settings": {
     "import/resolver": {

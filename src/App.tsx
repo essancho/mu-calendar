@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import Navigation from 'navigation';
+
+import './App.css';
 
 const App: React.FC = () => {
-  const [counter, setCounter] = useState(0);
-  return (
-    <div className="App">
-      {counter}
-      <button type="button" onClick={() => setCounter(counter + 1)}>
-        Add
-      </button>
-    </div>
-  );
+  return <Navigation />;
 };
 
 export default App;
