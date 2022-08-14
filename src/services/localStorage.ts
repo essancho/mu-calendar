@@ -1,7 +1,7 @@
 import { IFixturesResponse } from 'app/types/fixturesTypes';
 import { IStandingsResponse } from 'app/types/standingsTypes';
 
-type KeyType = 'fixtures' | 'standings';
+type KeyType = 'fixtures' | 'standings' | 'seasons';
 type ResponseType = IStandingsResponse | IFixturesResponse;
 
 export const writeData = (key: KeyType, data: ResponseType): void => {
