@@ -1,0 +1,23 @@
+.form {
+  width: 150px;
+  display: flex;
+}
+
+.teamForm {
+  color: white;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+}
+
+.win {
+  background-color: green;
+}
+.lose {
+  background: red;
+}
+.draw {
+  background: gray;
+}

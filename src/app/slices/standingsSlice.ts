@@ -14,7 +14,7 @@ export const asyncGetStandingsByLeagueId = createAsyncThunk(
     const data = readData('standings');
     if (data) {
       const res = JSON.parse(data);
-      if (res.updatedAt < Date.now() + 3600000) {
+      if (res.updatedAt < Date.now() + 3600000 && res.data.parameters.season === params.season) {
         return res.data.response[0].league.standings[0];
       }
       const response = await getStandingsById(params);
