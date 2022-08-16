@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-
 import { asyncGetFixturesByTeamId } from 'app/slices/fixturesSlice';
-
 import GroupedFixtures from './GroupedFixtures';
 
 import styles from '../styles.module.scss';
@@ -16,7 +14,7 @@ const FixturesComponent = () => {
   const months = [7, 8, 9, 10, 11, 0, 1, 2, 3, 4, 5, 6];
 
   useEffect(() => {
-    dispatch(asyncGetFixturesByTeamId({ season: '2022', team: '33', next: '50' }));
+    dispatch(asyncGetFixturesByTeamId({ season: '2022', team: '33' }));
   }, [dispatch]);
 
   return (

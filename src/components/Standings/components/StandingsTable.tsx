@@ -1,29 +1,15 @@
 import React from 'react';
-
 import { Table } from 'antd';
-import { IPosition } from 'app/types/standingsTypes';
-import { ColumnsType } from 'antd/lib/table';
-
-import FilterBlock from './FilterBlock';
+import { IColumns, IPosition } from 'app/types/standingsTypes';
 
 interface StandingsProps {
   dataSource: Array<IPosition>;
-  columns: ColumnsType<IPosition>;
-  season: string;
-  options: string[];
-  setSeason: React.Dispatch<React.SetStateAction<string>>;
+  columns: Array<IColumns>;
 }
 
-const StandingsTableComponent: React.FC<StandingsProps> = ({
-  dataSource,
-  columns,
-  season,
-  options,
-  setSeason,
-}) => {
+const StandingsTableComponent: React.FC<StandingsProps> = ({ dataSource, columns }) => {
   return (
     <div>
-      <FilterBlock season={season} options={options} setSeason={setSeason} />
       <Table dataSource={dataSource} columns={columns} pagination={false} />
     </div>
   );

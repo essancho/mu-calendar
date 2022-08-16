@@ -5,7 +5,6 @@ export interface IInitialState {
 export interface FixturesParamsInterface {
   season: string;
   team: string;
-  next?: string;
 }
 export interface IFixturesResponse {
   data: IFixturesData;

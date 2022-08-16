@@ -3,17 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { asyncGetStandingsByLeagueId } from 'app/slices/standingsSlice';
 import { IPosition, IStandingsPosition } from 'app/types/standingsTypes';
-import { getSeasons } from 'services/seasons';
-import { ColumnsType } from 'antd/lib/table';
 
 import StandingsTableComponent from '../components/StandingsTable';
 
-import StandingsForm from '../components/StandingsForm';
-
 const StandingsTable: React.FC = () => {
-  const options = getSeasons();
-  const [season, setSeason] = useState<string>(options[0]);
-  const [dataSource, setDataSource] = useState<IPosition[]>([]);
+  const [dataSource, setDataSource] = useState<Array<IPosition>>([]);
+
   const prepareData = (data: Array<IStandingsPosition>) => {
     const res = data.map((item: IStandingsPosition) => {
       const team = {
@@ -29,7 +24,6 @@ const StandingsTable: React.FC = () => {
         goalsAgainst: item.all.goals.against,
         goalsDiff: item.goalsDiff,
         points: item.points,
-        form: item.form,
       };
       return team;
     });
@@ -39,27 +33,23 @@ const StandingsTable: React.FC = () => {
   const dispatch = useAppDispatch();
   const positions = useAppSelector((state) => state.standings.positions);
 
-  const columns: ColumnsType<IPosition> = [
+  const columns = [
     {
       title: 'Position',
       dataIndex: 'rank',
       key: 'rank',
     },
     {
-      title: 'Club',
+      title: '',
       dataIndex: 'icon',
       key: 'icon',
       render: (icon: string) => <img width={25} alt="img" src={icon} />,
-      colSpan: 2,
-      align: 'left',
     },
     {
-      title: '',
+      title: 'Club',
       dataIndex: 'name',
       key: 'Name',
-      colSpan: 0,
     },
-
     {
       title: 'Played',
       dataIndex: 'played',
@@ -81,17 +71,17 @@ const StandingsTable: React.FC = () => {
       key: 'drawn',
     },
     {
-      title: 'GF',
+      title: 'Goals For',
       dataIndex: 'goalsFor',
       key: 'goalsFor',
     },
     {
-      title: 'GA',
+      title: 'Goals Against',
       dataIndex: 'goalsAgainst',
       key: 'goalsAgainst',
     },
     {
-      title: 'GD',
+      title: 'Goals Difference',
       dataIndex: 'goalsDiff',
       key: 'goalsDiff',
     },
@@ -99,33 +89,18 @@ const StandingsTable: React.FC = () => {
       title: 'Points',
       dataIndex: 'points',
       key: 'points',
-      render: (point) => <strong>{point}</strong>,
-    },
-    {
-      title: 'Form',
-      dataIndex: 'form',
-      key: 'form',
-      render: (item: string) => <StandingsForm item={item} />,
     },
   ];
 
   useEffect(() => {
-    dispatch(asyncGetStandingsByLeagueId({ season, league: '39' }));
-  }, [dispatch, season]);
+    dispatch(asyncGetStandingsByLeagueId({ season: '2022', league: '39' }));
+  }, [dispatch]);
 
   useEffect(() => {
     prepareData(positions);
   }, [positions]);
 
-  return (
-    <StandingsTableComponent
-      setSeason={setSeason}
-      dataSource={dataSource}
-      columns={columns}
-      season={season}
-      options={options}
-    />
-  );
+  return <StandingsTableComponent dataSource={dataSource} columns={columns} />;
 };
 
 export default StandingsTable;

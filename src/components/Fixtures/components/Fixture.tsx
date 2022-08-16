@@ -37,6 +37,7 @@ const Fixture: React.FC<Props> = ({ fixture }) => {
           </Col>
         </Row>
       </Col>
+      {/* <Divider /> */}
     </Row>
   );
 };

@@ -13,7 +13,7 @@ export const asyncGetFixturesByTeamId = createAsyncThunk(
     const data = readData('fixtures');
     if (data) {
       const res = JSON.parse(data);
-      if (res.updatedAt < Date.now() + 3600000) {
+      if (res.updatedAt < Date.now() + 36000000) {
         return res.data.response;
       }
       const response = await getFixturesById(params);

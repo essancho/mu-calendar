@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { IFixturesEntity } from 'app/types/fixturesTypes';
 import dayjs from 'dayjs';
 import { Typography } from 'antd';
-
-import { IFixturesEntity } from 'app/types/fixturesTypes';
-
 import Fixture from './Fixture';
 
 import styles from '../styles.module.scss';
@@ -15,20 +13,16 @@ interface Props {
 const GroupedFixtures: React.FC<Props> = ({ month, fixtures }) => {
   const [filtered, setFiltered] = useState<IFixturesEntity[]>([]);
   const filterFixtures = (arr: IFixturesEntity[]) => {
-    const result: IFixturesEntity[] = arr.filter((fix) => {
+    const result = arr.filter((fix) => {
       return dayjs(fix.fixture.date).month() === month;
     });
     setFiltered(result);
   };
-  const formattedMonth: string = dayjs().month(month).format('MMMM');
+  const formattedMonth = dayjs().month(month).format('MMMM');
   useEffect(() => {
     filterFixtures(fixtures);
     // eslint-disable-next-line
   }, [fixtures]);
-
-  if (filtered.length < 1) {
-    return null;
-  }
 
   return (
     <div className={styles.fixtureList}>

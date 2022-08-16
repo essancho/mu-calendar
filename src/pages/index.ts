@@ -1,5 +1,4 @@
 import MainPage from './MainPage/MainPage';
-import FixturesPage from './FixturesPage/FixturesPage';
-import StandingsPage from './StandingsPage/StandingsPage';
+import TestPage from './TestPage/TestPage';
 
-export { MainPage, FixturesPage, StandingsPage };
+export { MainPage, TestPage };

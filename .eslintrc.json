@@ -31,8 +31,7 @@
       }
     ],
     "no-param-reassign": 0,
-    "arrow-body-style": 0,
-    "operator-linebreak": 0
+    "arrow-body-style": 0
   },
   "settings": {
     "import/resolver": {
